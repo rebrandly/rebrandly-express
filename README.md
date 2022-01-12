@@ -30,12 +30,13 @@ Subscribe to Rebrandly and connect a domain name you have, or register a new one
 Make sure to turn on the "Aliasing" feature for the domain.
 
 While adding the middleware to your web server,  
-configure it with the name of your Branded Domain
+configure it with the token for your branded domain
+
 ```
 const rebrandlyRouter = require("rebrandly-express");
 
-const options = { "domain": "acme.link", "alias": "xxxxxxxxx.rebrandly.cc" };
-const acmeRouter = rebrandlyRouter(options);
+const auth = { "token": "<your-token-here>" };
+const acmeRouter = rebrandlyRouter(auth);
 
 ...
 app.use(acmeRouter);
