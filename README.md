@@ -1,12 +1,17 @@
 # rebrandly-express
-extend your Express.js web server with Rebrandly and have your team define new 301-redirects remotely
+Seamlessly connect your web server to Rebrandly so that you can re-use your domain name for both your app and your short links
 
 
 [Rebrandly](https://rebrandly.com) innovated the way individuals and companies share links,  
 introducing Branded Links and providing an easy way for everyone to define meaningful links using their custom domain name.
 
+Rebrandly embraced a mission to have you create Branded Links using the same domain name you use for your email and website,
+so that you are no longer supposed to dedicate an entire spare domain name to your short links:
+just use the .com you already have both for your website and short links!
+
 The `rebrandly-express` router is a middleware you can use in your NodeJS projects using Express router,  
-so that you can extend your web server's routes remotely after you have deployed the app.
+so that you can extend your web server's routes remotely after you have deployed the app
+by creating new links with this domain name in your Rebrandly account.
 
 ## install
 
@@ -23,7 +28,7 @@ If a matching Branded Link is found in your Rebrandly account, your visitor will
 ### Keep your flow the same
 This module is completely transparent to your existing flow and is 100% safe to add on top of what you have:  
 whenever it detects that there is no match neither in your app nor in Rebrandly,  
-your standard 404 routing will be selected as next page and your visitors will be served your 404 page.
+your standard 404 routing will be selected as next page and your visitors will be served your 404 page as before.
 
 ### Easy configuration
 Subscribe to Rebrandly and connect a domain name you have, or register a new one.
