@@ -6,7 +6,7 @@ extend your Express.js web server with Rebrandly and have your team define new 3
 introducing Branded Links and providing an easy way for everyone to define meaningful links using their custom domain name.
 
 The `rebrandly-express` router is a middleware you can use in your NodeJS projects using Express router,  
-so that you can extend your web server's route after you have deployed it.
+so that you can extend your web server's routes remotely after you have deployed the app.
 
 ## install
 
