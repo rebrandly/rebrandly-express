@@ -38,12 +38,15 @@ While adding the middleware to your web server,
 configure it with the token for your branded domain
 
 ```
-const rebrandlyRouter = require("rebrandly-express");
-
+const rebrandly = require("rebrandly-express");
 const auth = { "token": "<your-token-here>" };
-const acmeRouter = rebrandlyRouter(auth);
+const rebrandlyRouting = rebrandly.router(auth);
 
+// init your app as usual and add your middlewares
 ...
-app.use(acmeRouter);
+
+// then add Rebrandly right before your latest catchall rule for 404
+app.use(rebrandlyRouting);
+app.use('*', your404Handler);
 
 ```
