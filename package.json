@@ -1,0 +1,31 @@
+{
+  "name": "rebrandly-express",
+  "version": "0.0.1",
+  "description": "Seamlessly connect your web server to Rebrandly so that you can re-use your domain name for both your app and your short links",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rebrandly/rebrandly-express.git"
+  },
+  "keywords": [
+    "middleware",
+    "express",
+    "links",
+    "routing",
+    "domains",
+    "rebrandly",
+    "branded"
+  ],
+  "author": "Rebrandly Team",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/rebrandly/rebrandly-express/issues"
+  },
+  "homepage": "https://github.com/rebrandly/rebrandly-express#readme",
+  "devDependencies": {
+    "mocha": "^9.1.3"
+  }
+}
