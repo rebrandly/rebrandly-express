@@ -4,7 +4,7 @@
   "description": "Seamlessly connect your web server to Rebrandly so that you can re-use your domain name for both your app and your short links",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha tests",
+    "test": "mocha --require babel-core/register tests",
     "build": "npm run lint && babel ./src -d ./lib",
     "lint": "eslint ./src"
   },
