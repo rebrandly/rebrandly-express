@@ -4,7 +4,8 @@
   "description": "Seamlessly connect your web server to Rebrandly so that you can re-use your domain name for both your app and your short links",
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha tests"
+    "test": "mocha tests",
+    "build": "babel ./src -d ./lib"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,8 @@
   },
   "homepage": "https://github.com/rebrandly/rebrandly-express#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "mocha": "^9.1.3"
   }
 }
