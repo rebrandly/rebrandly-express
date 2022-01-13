@@ -16,7 +16,7 @@ by creating new links with this domain name in your Rebrandly account.
 ## install
 
 ```
-> npm install rebrandly-express [TODO]
+> npm install rebrandly-express
 ```
 
 ## How it works
@@ -35,18 +35,18 @@ Subscribe to Rebrandly and connect a domain name you have, or register a new one
 Make sure to turn on the "Aliasing" feature for the domain.
 
 While adding the middleware to your web server,  
-configure it with the token for your branded domain
+configure it with the alias for your branded domain
 
 ```
-const rebrandly = require("rebrandly-express");
-const auth = { "token": "<your-token-here>" };
-const rebrandlyRouting = rebrandly.router(auth);
+const rebrandlyRouter = require("rebrandly-express");
+const options = { "alias": "xxxxxxxxx.rebrandly.cc" };
+const fallbackToRebrandly = rebrandlyRouter(options);
 
 // init your app as usual and add your middlewares
 ...
 
 // then add Rebrandly right before your latest catchall rule for 404
-app.use(rebrandlyRouting);
+app.use(fallbackToRebrandly);
 app.use('*', your404Handler);
 
 ```
