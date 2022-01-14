@@ -1,25 +1,13 @@
-const url = require('url');
-const os = require("os");
-
-const transformURL = (req, alias) => {
-    const params = new url.URLSearchParams(req.query);
-    params.append("rb.routing.mode", "aliasing");
-    return new URL(`https://${alias}${req.path || "/"}?${params}`)
-}
-
-const loopDetected = (req) => {
-    const params = new url.URLSearchParams(req.query);
-    return params.has("rb.routing.mode") && params.get("rb.routing.mode") == "aliasing";
-}
+const { rewrite } = require("./libs/rewriting");
+const { loopDetected } = require("./libs/integration");
+const { parseOptions } = require("./libs/defaulting");
 
 const setup = (options) => {
-    options = options || {}
-    let log = options.log || console.log
-    let alias = options.alias || os.hostname();
-    
+    let { log, alias, dryRun, skip } = parseOptions(options); 
+       
     const aliasing = (req, res, next) => {
-        let nextUrl = transformURL(req, alias);
-        if (options.dryRun) {
+        let nextUrl = rewrite(req, alias);
+        if (dryRun) {
             log(`[Rebrandly][DRY] Redirecting to ${nextUrl} ...`)
             return next();
         }
@@ -27,7 +15,7 @@ const setup = (options) => {
     }
 
     return function (req, res, next) {
-        if (options.skip) {
+        if (skip) {
             return next();
         }
 
