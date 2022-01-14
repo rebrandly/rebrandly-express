@@ -2,7 +2,6 @@ const middleware = require("../src/index");
 const chai = require("chai");
 const expect = chai.expect;
 
-console.log(middleware)
 describe('Rebrandly middleware', () => {
 
     it("should execute with no-op", (done) => {
