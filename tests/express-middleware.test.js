@@ -4,7 +4,30 @@ const expect = chai.expect;
 
 describe('Rebrandly middleware', () => {
 
-    it("should execute with no-op", (done) => {
+    it("should return a 302-redirect to a transformed URL when matching", (done) => {
+        const alias = "alias.rebrandly.cc";
+        const matchingMiddleware = middleware({
+            alias
+        })
+
+        let noOp = () => { 
+            return done(new Error("has not performed any action")) 
+        };
+        let wrongOp = () => {
+            return done(new Error("has returned a non-302 response to the client"))
+        }
+        let expectedOp = (code, URL) => {
+            expect(code).to.be.equal(302);
+            expect(URL).to.be.equal(`https://${alias}/demo?rb.routing.mode=aliasing`)
+            return done();
+        };
+        let req = { path: "/demo" }
+        let res = { redirect: expectedOp, json: wrongOp }
+        let next = noOp;
+        matchingMiddleware(req, res, next);
+    })
+
+    it("should execute with no-op when not matching", (done) => {
         const disabledMiddleware = middleware({
             skip: true
         })
@@ -19,7 +42,7 @@ describe('Rebrandly middleware', () => {
         disabledMiddleware(req, res, next)
     })
 
-    it("should run in dry mode and only print a message", (done) => {
+    it("should run only print a message when running in dry mode", (done) => {
         const dryRunMiddleware = middleware({
             dryRun: true,
             log: (text) => {
@@ -37,7 +60,7 @@ describe('Rebrandly middleware', () => {
         dryRunMiddleware(req, res, next)
     })
 
-    it("should prevent redirection loops from happening when no link is found", (done) => {
+    it("should prevent redirection loops from happening when no branded link is found in Rebrandly", (done) => {
         const loopAwareMiddleware = middleware();
         let noOp = () => { return done() };
         let op = () => {
