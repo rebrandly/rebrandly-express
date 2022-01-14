@@ -1,3 +1,6 @@
+build
+dist
+
 # Logs
 logs
 *.log
@@ -106,3 +109,5 @@ dist
 
 # build output
 lib/
+
+.idea
