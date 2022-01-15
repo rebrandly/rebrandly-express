@@ -1,7 +1,6 @@
 # rebrandly-express
 Seamlessly connect your web server to Rebrandly so that you can re-use your domain name for both your app and your short links
 
-
 [Rebrandly](https://rebrandly.com) innovated the way individuals and companies share links,  
 introducing Branded Links and providing an easy way for everyone to define meaningful links using their custom domain name.
 
@@ -39,7 +38,10 @@ configure it with the alias for your branded domain
 
 ```
 const rebrandlyRouter = require("rebrandly-express");
-const options = { "alias": "xxxxxxxxx.rebrandly.cc" };
+
+// replace alias with your own alias
+const options = { "alias": "46e8ac9583d7e0c513485aef06045733.rebrandly.cc" };
+
 const fallbackToRebrandly = rebrandlyRouter(options);
 
 // init your app as usual and add your middlewares
@@ -50,3 +52,5 @@ app.use(fallbackToRebrandly);
 app.use('*', your404Handler);
 
 ```
+
+Example HTTP server with module installed: [https://github.com/rebrandly/rebrandly-express-demo](https://github.com/rebrandly/rebrandly-express-demo)
