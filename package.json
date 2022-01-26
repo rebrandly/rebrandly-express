@@ -5,13 +5,11 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "test-old": "nyc mocha --require babel-core/register tests",
     "clean": "rm -fr build",
     "build": "npm run clean && tsc",
     "lint": "eslint ./src",
     "prepublishOnly": "npm run build",
-    "test": "jest",
-    "tmp": "ts-node src/tmp/tmp.ts"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
