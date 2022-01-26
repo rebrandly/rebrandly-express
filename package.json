@@ -1,6 +1,6 @@
 {
   "name": "rebrandly-express",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Seamlessly connect your web server to Rebrandly so that you can re-use your domain name for both your app and your short links",
   "main": "build/index.js",
   "types": "build/index.d.ts",
