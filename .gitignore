@@ -1,6 +1,7 @@
 build
 dist
 src/tmp
+lib
 
 # Logs
 logs
