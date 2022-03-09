@@ -26,7 +26,7 @@ export const createAliasingMiddleware = (options: ConfigOptions): ExpressMiddlew
         const nextUrl = rewrite(req, alias!);
 
         if (dryRun) {
-            log!(`[Rebrandly][DRY] Redirecting to ${nextUrl} ...`);
+            log!(`[DRY] Redirecting to ${nextUrl} ...`);
             return next();
         }
 

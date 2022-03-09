@@ -43,19 +43,17 @@ describe('Rebrandly middleware', () => {
         expect(redirect).toBe(false);
     });
 
-    it('should run only print a message when running in dry mode', async () => {
+    it('should only print a message when running in dry mode', async () => {
         const app = express();
         const request = supertest(app);
         const alias = "alias.rebrandly.cc";
         const path = '/';
+        const mockLog = jest.fn();
 
         const rbMiddleware = createExpressMiddleware({
             alias,
             dryRun: true,
-            log: (text) => {
-                expect(text).toBeDefined();
-                expect(text.length).toBeGreaterThan(0);
-            },
+            log: mockLog,
         });
 
         app.use(rbMiddleware);
@@ -66,6 +64,7 @@ describe('Rebrandly middleware', () => {
 
         expect(statusCode).toBe(200);
         expect(redirect).toBe(false);
+        expect(mockLog).toBeCalled();
     });
 
     it('should prevent redirection loops from happening when no branded link is found in Rebrandly', async () => {
