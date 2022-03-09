@@ -36,7 +36,7 @@ Make sure to turn on the "Aliasing" feature for the domain.
 While adding the middleware to your web server,  
 configure it with the alias for your branded domain
 
-```
+```ts
 const rebrandlyRouter = require("rebrandly-express");
 
 // replace alias with your own alias
@@ -50,7 +50,22 @@ const fallbackToRebrandly = rebrandlyRouter(options);
 // then add Rebrandly right before your latest catchall rule for 404
 app.use(fallbackToRebrandly);
 app.use('*', your404Handler);
+```
 
+## Logger
+Library uses [debug](https://github.com/visionmedia/debug) package under the hood for logging. 
+The following namespaces are used:
+
+* `rebrandly:debug`
+* `rebrandly:info`
+* `rebrandly:warn`
+* `rebrandly:error`
+
+Environment variable `RB_LOG` can be used to specify which log namespace to use, otherwise `rebrandly:info` is
+used by default.
+
+```sh
+RB_LOG=rebrandly:error node app.js
 ```
 
 Example HTTP server with module installed: [https://github.com/rebrandly/rebrandly-express-demo](https://github.com/rebrandly/rebrandly-express-demo)
